@@ -1,0 +1,12 @@
+.navigation {
+  min-width: 250px;
+  height: 100%;
+  box-shadow: 4px 0 20px 0px #888;
+  z-index: 9;
+
+  h2 {
+    padding: 16px 30px;
+    border-bottom: 1px solid #000;
+    margin: 0;
+  }
+}

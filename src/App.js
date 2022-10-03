@@ -1,23 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { CirclesWithBar } from "react-loader-spinner";
+import { fetchMusics } from "./features/music/musicSlice";
+import musiclist from "./server/musicdata";
+import { CONSTANTS } from "./constants/constants";
+
+import Player from "./components/Player/Player";
+import Navigation from "./components/Navigation/Navigation";
+
+import "./App.scss";
 
 function App() {
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
+  const [showLyrics, setShowLyrics] = useState(false);
+  const music = useSelector((state) => state.music);
+  const activeMusic = music.musicList.find((music) => music.active);
+
+  useEffect(() => {
+    dispatch(fetchMusics(musiclist()));
+    setTimeout(() => {
+      setIsLoading(false);
+    }, CONSTANTS.defaultLoadingTime);
+  }, [dispatch]);
+
+  if (isLoading) {
+    return (
+      <CirclesWithBar
+        height="100"
+        width="100"
+        color={CONSTANTS.loaderColor}
+        wrapperClass="LoaderContainer"
+        visible={true}
+        ariaLabel="circles-with-bar-loading"
+      />
+    );
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navigation musicList={music.musicList} />
+      <Player
+        showLyrics={showLyrics}
+        setShowLyrics={setShowLyrics}
+        activeMusic={activeMusic}
+      />
     </div>
   );
 }

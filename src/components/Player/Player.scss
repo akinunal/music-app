@@ -1,0 +1,83 @@
+.container {
+  width: 100%;
+  background: #fff;
+  transition: all 0.35s ease;
+  padding: 20px 90px 0 90px;
+  text-align: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+}
+
+.chevron {
+  display: inline-block;
+  height: 24px;
+  opacity: 1;
+  transition: all 0.35s ease;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.content {
+  .cover-image-wrapper {
+    max-width: 240px;
+    margin: auto;
+    transition: all 0.35s ease;
+    &.showImage {
+      max-height: 360px;
+      opacity: 1;
+    }
+    &.hideImage {
+      max-height: 0;
+      opacity: 0;
+      display: none;
+    }
+    
+    img {
+      width: 100%;
+      border-radius: 50px;
+    }
+  }
+
+  .title-wrapper {
+    margin: 24px 0;
+  }
+
+  .range-wraper {
+    display: flex;
+    margin-bottom: 20px;
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .control-wrapper {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    max-width: 400px;
+
+    .prevNext {
+      width: 30px;
+      height: 30px;
+    }
+
+    .play-pause {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .lyrics-wrapper {
+    max-width: 300px;
+    margin: auto;
+
+    p {
+      margin: 0;
+    }
+  }
+}
