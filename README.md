@@ -1,3 +1,5 @@
+# Used node version 16.17.1 while creating the project. In case you cannot run the project, please test with this version.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
